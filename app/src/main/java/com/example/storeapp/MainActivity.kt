@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.example.storeapp.navigation.NavManager
 import com.example.storeapp.ui.theme.StoreAppTheme
 import com.example.storeapp.view.Login
 import com.example.storeapp.viewModel.LoginViewModel
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
             val loginViewModel:LoginViewModel by viewModels()
             StoreAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Login(loginViewModel = loginViewModel, modifier = Modifier.padding(innerPadding))
+                    NavManager(loginViewModel = loginViewModel, modifier = Modifier.padding(innerPadding))
                 }
             }
         }

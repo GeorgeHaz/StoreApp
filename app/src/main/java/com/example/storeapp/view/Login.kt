@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -14,6 +15,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.storeapp.viewModel.LoginViewModel
 
@@ -37,15 +40,28 @@ fun LoginBody(loginViewModel: LoginViewModel){
         TextField(
             value = username,
             onValueChange = {loginViewModel.updateLogin(it,password)},
-            label = { Text(text = "User") })
+            label = { Text(text = "User") },
+            singleLine = true,
+            maxLines = 1,
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            ))
         Spacer(modifier = Modifier.size(10.dp))
         TextField(
             value = password,
             onValueChange = {loginViewModel.updateLogin(username, it)},
-            label = { Text(text = "Pass")})
+            label = { Text(text = "Pass")},
+            singleLine = true,
+            maxLines = 1,
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done
+            )
+        )
         Spacer(modifier = Modifier.size(10.dp))
         Button(onClick = { loginViewModel.loginInit() }) {
             Text(text = "AGREE")
         }
+
     }
 }
