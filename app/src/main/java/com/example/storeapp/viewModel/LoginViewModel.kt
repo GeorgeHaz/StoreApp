@@ -37,7 +37,6 @@ class LoginViewModel @Inject constructor(
                 }catch (e:Exception){
                     Log.e("BAD", e.message.toString())
                 }
-
             }
         }
     }

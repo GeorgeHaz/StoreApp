@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -18,12 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import com.example.storeapp.navigation.RouteNav
 import com.example.storeapp.viewModel.LoginViewModel
 
 @Composable
-fun Login(loginViewModel: LoginViewModel, modifier: Modifier){
-    Surface(modifier = modifier) {
+fun Login(loginViewModel: LoginViewModel, navController: NavController){
+    Surface(modifier = Modifier.fillMaxSize()) {
         LoginBody(loginViewModel)
+        FootBody(navController = navController)
     }
 }
 
@@ -62,6 +66,21 @@ fun LoginBody(loginViewModel: LoginViewModel){
         Button(onClick = { loginViewModel.loginInit() }) {
             Text(text = "AGREE")
         }
+    }
+}
 
+@Composable
+fun FootBody(navController: NavController){
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.End
+    ){
+        Button(onClick = {
+            navController.navigate(route = RouteNav.SigInUp.route)
+        }, modifier = Modifier.padding(10.dp)
+        ) {
+            Text(text = "SingUp")
+        }
     }
 }
