@@ -6,11 +6,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.storeapp.component.AddUserLoggin
 import com.example.storeapp.component.TopBarEnd
 
 @Composable
@@ -37,5 +39,6 @@ fun SingUp(navController: NavController) {
 fun BodySing(modifier: Modifier) {
     Column(modifier = modifier) {
         Text(text = "Sing Up")
+        AddUserLoggin(Text = "email"){}
     }
 }
