@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.storeapp.view.HomeScreen
 import com.example.storeapp.view.Login
 import com.example.storeapp.view.SingUp
 import com.example.storeapp.viewModel.LoginViewModel
@@ -18,6 +19,9 @@ fun NavManager(loginViewModel: LoginViewModel){
         }
         composable(RouteNav.SigInUp.route){
             SingUp(navController = navController)
+        }
+        composable(RouteNav.Home.route){
+            HomeScreen(navController = navController)
         }
     }
 }

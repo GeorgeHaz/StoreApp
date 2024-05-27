@@ -1,9 +1,9 @@
 package com.example.storeapp.viewModel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.storeapp.domain.LoginUseCase
+import com.example.storeapp.utils.LoginState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,6 +16,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase
 ) : ViewModel() {
+    private val _loginState = MutableStateFlow<LoginState>(LoginState.Idle)
+    val loginState = _loginState.asStateFlow()
 
     private val _username = MutableStateFlow("")
     val username = _username.asStateFlow()
@@ -33,9 +35,9 @@ class LoginViewModel @Inject constructor(
             withContext(Dispatchers.IO){
                 try {
                     val result = loginUseCase.invoke(_username.value,_password.value)
-                    Log.e("good",result.token)
+                    _loginState.value = LoginState.Success(result)
                 }catch (e:Exception){
-                    Log.e("BAD", e.message.toString())
+                    _loginState.value = LoginState.Error(e.localizedMessage ?: "Unknown Error")
                 }
             }
         }
