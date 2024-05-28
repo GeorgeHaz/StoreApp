@@ -82,6 +82,9 @@ dependencies {
     //coil
     implementation(libs.coil.compose)
 
+    //iconos
+    implementation(libs.androidx.material.icons.extended)
+
     //room
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler)
