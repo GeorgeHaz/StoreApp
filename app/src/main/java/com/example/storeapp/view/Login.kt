@@ -22,6 +22,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -104,10 +105,10 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(16.dp)
     ) {
-        OutlinedTextField(
+        TextField(
             value = username,
             onValueChange = { loginViewModel.updateLogin(it, password) },
-            label = { Text(text = "User") },
+            label = { Text(text = "Usuario") },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             maxLines = 1,
@@ -116,10 +117,10 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
             )
         )
         Spacer(modifier = Modifier.size(10.dp))
-        OutlinedTextField(
+        TextField(
             value = password,
             onValueChange = { loginViewModel.updateLogin(username, it) },
-            label = { Text(text = "Pass") },
+            label = { Text(text = "Contraseña") },
             singleLine = true,
             maxLines = 1,
             modifier = Modifier.fillMaxWidth(),
@@ -139,8 +140,10 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
             )
         )
         Text(
-            text = "Forgot Password?",
+            text = "Olvido Contraseña?",
             fontSize = 10.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
             modifier = Modifier
                 .align(Alignment.End)
                 .padding(end = 16.dp)
@@ -150,7 +153,7 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
             onClick = { loginViewModel.loginInit() },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "AGREE")
+            Text(text = "INGRESAR")
         }
         when (loginState) {
             is LoginState.Idle -> {}
@@ -170,12 +173,14 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
                 .padding(16.dp),
         ) {
             Text(
-                text = "Don't have an account?",
+                text = "No tiene una cuenta?",
+                color = Color.White,
                 fontSize = 10.sp
             )
             Text(
-                text = "Sign Up",
+                text = "Registrarse",
                 fontWeight = FontWeight.Bold,
+                color = Color.White,
                 fontSize = 10.sp,
                 modifier = Modifier
                     .clickable {

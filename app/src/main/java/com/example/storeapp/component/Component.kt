@@ -28,16 +28,3 @@ fun TopBarEnd(
         }
     }
 }
-
-@Composable
-fun AddUserLoggin(
-    Text:String,
-    TextValue:()->Unit,
-){
-    Row (modifier = Modifier.fillMaxWidth()
-    ){
-        Text(text = Text)
-        TextValue()
-
-    }
-}

@@ -1,6 +1,6 @@
 package com.example.storeapp.model
 
-data class SignRequest(
+data class SingRequest(
     val email: String,
     val username: String,
     val password: String,
@@ -25,4 +25,8 @@ data class Address(
 data class Geolocation(
     val lat:String,
     val long:String
+)
+
+data class SingResponse(
+    val id:Int,
 )
