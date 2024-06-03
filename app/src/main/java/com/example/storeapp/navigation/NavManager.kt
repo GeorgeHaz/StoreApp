@@ -8,9 +8,10 @@ import com.example.storeapp.view.HomeScreen
 import com.example.storeapp.view.Login
 import com.example.storeapp.view.SingUp
 import com.example.storeapp.viewModel.LoginViewModel
+import com.example.storeapp.viewModel.SignUpViewModel
 
 @Composable
-fun NavManager(loginViewModel: LoginViewModel){
+fun NavManager(loginViewModel: LoginViewModel, signUpViewModel: SignUpViewModel){
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = RouteNav.Login.route) {
@@ -18,7 +19,7 @@ fun NavManager(loginViewModel: LoginViewModel){
             Login(loginViewModel = loginViewModel, navController = navController)
         }
         composable(RouteNav.SigInUp.route){
-            SingUp(navController = navController)
+            SingUp(navController = navController, signUpViewModel = signUpViewModel)
         }
         composable(RouteNav.Home.route){
             HomeScreen(navController = navController)

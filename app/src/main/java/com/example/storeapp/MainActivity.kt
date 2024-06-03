@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import com.example.storeapp.navigation.NavManager
 import com.example.storeapp.ui.theme.StoreAppTheme
 import com.example.storeapp.viewModel.LoginViewModel
+import com.example.storeapp.viewModel.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,13 +19,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val loginViewModel:LoginViewModel by viewModels()
+        val signUpViewModel: SignUpViewModel by viewModels()
         setContent {
             StoreAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavManager(loginViewModel = loginViewModel)
+                    NavManager(loginViewModel = loginViewModel, signUpViewModel = signUpViewModel)
                 }
             }
         }

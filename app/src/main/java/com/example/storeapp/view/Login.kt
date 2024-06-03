@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -148,7 +147,9 @@ fun FootBody(loginViewModel: LoginViewModel, navController: NavController, modif
                 .align(Alignment.End)
                 .padding(end = 16.dp)
         )
+
         Spacer(modifier = Modifier.size(16.dp))
+
         Button(
             onClick = { loginViewModel.loginInit() },
             modifier = Modifier.fillMaxWidth()

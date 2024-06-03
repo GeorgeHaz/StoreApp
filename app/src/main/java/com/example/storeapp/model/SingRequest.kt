@@ -17,7 +17,7 @@ data class Name(
 data class Address(
     val city:String,
     val street:String,
-    val number:Int,
+    val number:String,
     val zipcode:String,
     val geoLocation:Geolocation
 )
@@ -28,5 +28,5 @@ data class Geolocation(
 )
 
 data class SingResponse(
-    val id:Int,
+    val id:Int
 )

@@ -1,5 +1,6 @@
 package com.example.storeapp.viewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.storeapp.domain.SingUpUseCase
@@ -41,7 +42,7 @@ class SignUpViewModel @Inject constructor(private val useCase: SingUpUseCase) : 
     private val _street = MutableStateFlow("")
     val street = _street.asStateFlow()
 
-    private val _number = MutableStateFlow(0)
+    private val _number = MutableStateFlow("")
     val number = _number.asStateFlow()
 
     private val _zipCode = MutableStateFlow("")
@@ -68,7 +69,7 @@ class SignUpViewModel @Inject constructor(private val useCase: SingUpUseCase) : 
         _lastName.value = lastName
     }
 
-    fun onAddressChange(city: String, street: String, number: Int, zipCode: String) {
+    fun onAddressChange(city: String, street: String, number: String, zipCode: String) {
         _city.value = city
         _street.value = street
         _number.value = number
@@ -99,8 +100,8 @@ class SignUpViewModel @Inject constructor(private val useCase: SingUpUseCase) : 
                 _signUpState.value = SignUpState.Success(result)
             } catch (e: Exception) {
                 _signUpState.value = SignUpState.Error(e.localizedMessage ?: "Error")
+                Log.e("registroerror", e.localizedMessage ?: "Error")
             }
-
         }
     }
 }
